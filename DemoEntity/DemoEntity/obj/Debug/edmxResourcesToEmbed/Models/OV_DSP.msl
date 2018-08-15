@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="OV_DSPModelStoreContainer" CdmEntityContainer="OV_DSPEntities">
+    <EntitySetMapping Name="Orders">
+      <EntityTypeMapping TypeName="OV_DSPModel.Order">
+        <MappingFragment StoreEntitySet="Orders">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="PackageId" ColumnName="PackageId" />
+          <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+          <ScalarProperty Name="CompletedBy" ColumnName="CompletedBy" />
+          <ScalarProperty Name="CompletedDateTime" ColumnName="CompletedDateTime" />
+          <ScalarProperty Name="SkidDateTime" ColumnName="SkidDateTime" />
+          <ScalarProperty Name="ProductGroupCode" ColumnName="ProductGroupCode" />
+          <ScalarProperty Name="EquivalentWeightedMean" ColumnName="EquivalentWeightedMean" />
+          <ScalarProperty Name="EntDate" ColumnName="EntDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Breaks">
+      <EntityTypeMapping TypeName="OV_DSPModel.Break">
+        <MappingFragment StoreEntitySet="Breaks">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ShiftId" ColumnName="ShiftId" />
+          <ScalarProperty Name="ShiftDay" ColumnName="ShiftDay" />
+          <ScalarProperty Name="BreakId" ColumnName="BreakId" />
+          <ScalarProperty Name="BreakStart" ColumnName="BreakStart" />
+          <ScalarProperty Name="BreakEnd" ColumnName="BreakEnd" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EventLogs">
+      <EntityTypeMapping TypeName="OV_DSPModel.EventLog">
+        <MappingFragment StoreEntitySet="EventLog">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="EventId" ColumnName="EventId" />
+          <ScalarProperty Name="EventErrorCode" ColumnName="EventErrorCode" />
+          <ScalarProperty Name="EventError" ColumnName="EventError" />
+          <ScalarProperty Name="EventDateTime" ColumnName="EventDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Issues">
+      <EntityTypeMapping TypeName="OV_DSPModel.Issue">
+        <MappingFragment StoreEntitySet="Issues">
+          <ScalarProperty Name="IssueId" ColumnName="IssueId" />
+          <ScalarProperty Name="Issue1" ColumnName="Issue" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderLogs">
+      <EntityTypeMapping TypeName="OV_DSPModel.OrderLog">
+        <MappingFragment StoreEntitySet="OrderLog">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ShiftId" ColumnName="ShiftId" />
+          <ScalarProperty Name="ShiftDay" ColumnName="ShiftDay" />
+          <ScalarProperty Name="LinePrimary" ColumnName="LinePrimary" />
+          <ScalarProperty Name="Line" ColumnName="Line" />
+          <ScalarProperty Name="ShiftGoalCount" ColumnName="ShiftGoalCount" />
+          <ScalarProperty Name="ShiftActualCount" ColumnName="ShiftActualCount" />
+          <ScalarProperty Name="SecondsPerOrder" ColumnName="SecondsPerOrder" />
+          <ScalarProperty Name="EntDate" ColumnName="EntDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProgressLogs">
+      <EntityTypeMapping TypeName="OV_DSPModel.ProgressLog">
+        <MappingFragment StoreEntitySet="ProgressLog">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ProgressId" ColumnName="ProgressId" />
+          <ScalarProperty Name="ShiftId" ColumnName="ShiftId" />
+          <ScalarProperty Name="PrimaryLine" ColumnName="PrimaryLine" />
+          <ScalarProperty Name="CompletedDate" ColumnName="CompletedDate" />
+          <ScalarProperty Name="CompletedHour" ColumnName="CompletedHour" />
+          <ScalarProperty Name="Counts" ColumnName="Counts" />
+          <ScalarProperty Name="EquivalentCount" ColumnName="EquivalentCount" />
+          <ScalarProperty Name="CumulativeCount" ColumnName="CumulativeCount" />
+          <ScalarProperty Name="Issue" ColumnName="Issue" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="EntDate" ColumnName="EntDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Schedules">
+      <EntityTypeMapping TypeName="OV_DSPModel.Schedule">
+        <MappingFragment StoreEntitySet="Schedule">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ShiftId" ColumnName="ShiftId" />
+          <ScalarProperty Name="ShiftDay" ColumnName="ShiftDay" />
+          <ScalarProperty Name="Line" ColumnName="Line" />
+          <ScalarProperty Name="Members" ColumnName="Members" />
+          <ScalarProperty Name="MemberCapacity" ColumnName="MemberCapacity" />
+          <ScalarProperty Name="ShiftGoal" ColumnName="ShiftGoal" />
+          <ScalarProperty Name="ShiftPace" ColumnName="ShiftPace" />
+          <ScalarProperty Name="Order_Minutes" ColumnName="Order_Minutes" />
+          <ScalarProperty Name="Order_Seconds" ColumnName="Order_Seconds" />
+          <ScalarProperty Name="EntDate" ColumnName="EntDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Shifts">
+      <EntityTypeMapping TypeName="OV_DSPModel.Shift">
+        <MappingFragment StoreEntitySet="Shifts">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ShiftId" ColumnName="ShiftId" />
+          <ScalarProperty Name="ShiftDay" ColumnName="ShiftDay" />
+          <ScalarProperty Name="ShiftStart" ColumnName="ShiftStart" />
+          <ScalarProperty Name="ShiftEnd" ColumnName="ShiftEnd" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="EntDate" ColumnName="EntDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StatusLogs">
+      <EntityTypeMapping TypeName="OV_DSPModel.StatusLog">
+        <MappingFragment StoreEntitySet="StatusLog">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ShiftId" ColumnName="ShiftId" />
+          <ScalarProperty Name="Lines" ColumnName="Lines" />
+          <ScalarProperty Name="PaceCount" ColumnName="PaceCount" />
+          <ScalarProperty Name="ActualCount" ColumnName="ActualCount" />
+          <ScalarProperty Name="EntDate" ColumnName="EntDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

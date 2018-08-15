@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="OV_DSPModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PackageId" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="OrderId" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="CompletedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CompletedDateTime" Type="DateTime" Precision="3" />
+    <Property Name="SkidDateTime" Type="DateTime" Precision="3" />
+    <Property Name="ProductGroupCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="EquivalentWeightedMean" Type="Decimal" Precision="2" Scale="1" />
+    <Property Name="EntDate" Type="DateTime" Nullable="false" Precision="0" />
+  </EntityType>
+  <EntityType Name="Break">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ShiftId" Type="Int32" />
+    <Property Name="ShiftDay" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="BreakId" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="BreakStart" Type="DateTime" Precision="0" />
+    <Property Name="BreakEnd" Type="DateTime" Precision="0" />
+    <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Active" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="EventLog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EventId" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="EventErrorCode" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="EventError" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="EventDateTime" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="Issue">
+    <Key>
+      <PropertyRef Name="IssueId" />
+      <PropertyRef Name="Issue1" />
+    </Key>
+    <Property Name="IssueId" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Issue1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OrderLog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ShiftId" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="ShiftDay" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Name="LinePrimary" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Line" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="ShiftGoalCount" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="ShiftActualCount" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="SecondsPerOrder" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="EntDate" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="ProgressLog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProgressId" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="ShiftId" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="PrimaryLine" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="CompletedDate" Type="DateTime" Precision="0" />
+    <Property Name="CompletedHour" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Counts" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="EquivalentCount" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="CumulativeCount" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Issue" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Comment" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="EntDate" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="Schedule">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="EntDate" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ShiftId" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="ShiftDay" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Line" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="Members" Type="Int32" />
+    <Property Name="MemberCapacity" Type="Int32" />
+    <Property Name="ShiftGoal" Type="Int32" />
+    <Property Name="ShiftPace" Type="Int32" />
+    <Property Name="Order_Minutes" Type="Int32" />
+    <Property Name="Order_Seconds" Type="Int32" />
+    <Property Name="EntDate" Type="DateTime" Nullable="false" Precision="0" />
+  </EntityType>
+  <EntityType Name="Shift">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ShiftId" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="ShiftDay" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="ShiftStart" Type="DateTime" Precision="0" />
+    <Property Name="ShiftEnd" Type="DateTime" Precision="0" />
+    <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Active" Type="Boolean" />
+    <Property Name="EntDate" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="StatusLog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ShiftId" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Lines" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="PaceCount" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="ActualCount" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="EntDate" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityContainer Name="OV_DSPEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Orders" EntityType="Self.Order" />
+    <EntitySet Name="Breaks" EntityType="Self.Break" />
+    <EntitySet Name="EventLogs" EntityType="Self.EventLog" />
+    <EntitySet Name="Issues" EntityType="Self.Issue" />
+    <EntitySet Name="OrderLogs" EntityType="Self.OrderLog" />
+    <EntitySet Name="ProgressLogs" EntityType="Self.ProgressLog" />
+    <EntitySet Name="Schedules" EntityType="Self.Schedule" />
+    <EntitySet Name="Shifts" EntityType="Self.Shift" />
+    <EntitySet Name="StatusLogs" EntityType="Self.StatusLog" />
+  </EntityContainer>
+</Schema>

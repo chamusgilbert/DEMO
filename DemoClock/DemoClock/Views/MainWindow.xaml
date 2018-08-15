@@ -1,0 +1,86 @@
+﻿<UserControl x:Class="JobClock.Views.PunchView" local:IsFocusedAttachedProperty.IsFocused="{Binding CurrentProperty}" 
+             KeyDown="UserControl_KeyDown" 
+             KeyUp="UserControl_KeyUp" 
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
+             xmlns:local="clr-namespace:JobClock" mc:Ignorable="d" 
+             PreviewKeyDown="UserControl_PreviewKeyDown" 
+             Focusable="False">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Name="Zero" Height="Auto" />
+            <RowDefinition Name="One" Height="Auto" />
+            <RowDefinition Name="Two" Height="Auto" />
+            <RowDefinition Name="Three" Height="Auto" />
+            <RowDefinition Name="Four" Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="200"/>
+        </Grid.ColumnDefinitions>
+
+        <!--Row 0-->
+
+        <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Label Content="Employee:" HorizontalAlignment="Right" />
+            <Label Content="{Binding EmplCode}" HorizontalAlignment="Right"/>
+        </StackPanel>
+
+
+
+
+        <!--Row 1-->
+
+        <Label FontSize="15" FontWeight="Bold" Content="Punch Ticket" Grid.Row="1" />
+        <TextBox x:Name="ScannedData" Text="{Binding ScannedData}" Height="0" Width="0"/>
+        <!--Row 2-->
+
+        <Label Content="Job No." Grid.Row="2" />
+        <Label Content="Step No." Grid.Row="2" Grid.Column="1" />
+        <Label Content="Quantity" Grid.Row="2" Grid.Column="2" />
+
+        <!--Row 3-->
+
+        <TextBox x:Name="CurrentJobNo" Grid.Row="3">
+            <TextBox.Text>
+                <Binding Path="CurrentJobNo" UpdateSourceTrigger="LostFocus">
+                    <Binding.ValidationRules>
+                        <local:JobNoValidationRule ValidationStep="RawProposedValue" />
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+        <TextBox x:Name="CurrentStepNo" Grid.Row="3" Grid.Column="1">
+            <TextBox.Text>
+                <Binding Path="CurrentStepNo" UpdateSourceTrigger="LostFocus">
+                    <Binding.ValidationRules>
+                        <local:StringToShortValidationRule ValidationStep="RawProposedValue" />
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+        <TextBox x:Name="CurrentQty" Grid.Row="3" Grid.Column="2">
+            <TextBox.Text>
+                <Binding Path="CurrentQty" UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
+                        <local:StringToIntValidationRule ValidationStep="RawProposedValue" />
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+
+        <!--Row 4-->
+
+        <DockPanel Grid.Row="4" Grid.Column="3" LastChildFill="False">
+            <Button Content="Submit" Command="{Binding SubmitPunchCommand}" HorizontalAlignment="Stretch" Width="80"/>
+            <Button Content="Done" Command="{Binding DoneCommand}" HorizontalAlignment="Stretch" Width="80"/>
+        </DockPanel>
+
+    </Grid>
+
+
+</UserControl>

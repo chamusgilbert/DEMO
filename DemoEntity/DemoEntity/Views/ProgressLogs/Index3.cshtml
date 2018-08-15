@@ -1,0 +1,64 @@
+﻿@model IEnumerable<DemoEntity.Models.ProgressLog>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ProgressId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PrimaryLine)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CompletedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CompletedHour)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Counts)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EquivalentCount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CumulativeCount)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        @{ if (item.ShiftId == "3001")
+        {
+            <td>
+                @Html.DisplayFor(modelItem => item.ProgressId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrimaryLine)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CompletedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CompletedHour)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Counts)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EquivalentCount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CumulativeCount)
+            </td>
+    }}
+    </tr>
+}
+
+</table>

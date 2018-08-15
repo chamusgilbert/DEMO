@@ -1,0 +1,112 @@
+﻿@model DemoEntity.Models.ProgressLog
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>ProgressLog</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ProgressId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProgressId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ShiftId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShiftId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PrimaryLine)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PrimaryLine)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CompletedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CompletedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CompletedHour)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CompletedHour)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Counts)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Counts)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EquivalentCount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EquivalentCount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CumulativeCount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CumulativeCount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Issue)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Issue)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Comment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Comment)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EntDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EntDate)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

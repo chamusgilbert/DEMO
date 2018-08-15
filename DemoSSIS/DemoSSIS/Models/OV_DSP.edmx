@@ -1,0 +1,532 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="OV_DSPModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'OV_DSP.dbo.Breaks' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Breaks">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ShiftId" Type="int" />
+          <Property Name="ShiftDay" Type="nvarchar" MaxLength="5" />
+          <Property Name="BreakId" Type="nvarchar" MaxLength="5" />
+          <Property Name="BreakStart" Type="smalldatetime" />
+          <Property Name="BreakEnd" Type="smalldatetime" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" />
+          <Property Name="Active" Type="bit" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'OV_DSP.dbo.EquivalentWeightedMean' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="EquivalentWeightedMean">
+          <Property Name="ProductGroupCode" Type="nvarchar" MaxLength="10" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" />
+          <Property Name="WeightedMeanFromSSE" Type="numeric" Precision="2" Scale="1" />
+          <Property Name="Secs2Assemble" Type="int" />
+          <Property Name="Secs2AssembleID" Type="varchar" MaxLength="1" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'OV_DSP.dbo.EventLog' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="EventLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EventId" Type="nvarchar" MaxLength="100" />
+          <Property Name="EventErrorCode" Type="nvarchar" MaxLength="200" />
+          <Property Name="EventError" Type="nvarchar" MaxLength="400" />
+          <Property Name="EventDateTime" Type="smalldatetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'OV_DSP.dbo.Issues' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Issues">
+          <Key>
+            <PropertyRef Name="IssueId" />
+            <PropertyRef Name="Issue" />
+          </Key>
+          <Property Name="IssueId" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Issue" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'OV_DSP.dbo.OrderLog' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="OrderLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ShiftId" Type="nvarchar" MaxLength="5" />
+          <Property Name="ShiftDay" Type="nvarchar" MaxLength="3" />
+          <Property Name="LinePrimary" Type="nvarchar" MaxLength="20" />
+          <Property Name="Line" Type="nvarchar" MaxLength="20" />
+          <Property Name="ShiftGoalCount" Type="nvarchar" MaxLength="5" />
+          <Property Name="ShiftActualCount" Type="nvarchar" MaxLength="5" />
+          <Property Name="SecondsPerOrder" Type="nvarchar" MaxLength="5" />
+          <Property Name="EntDate" Type="smalldatetime" />
+        </EntityType>
+        <EntityType Name="Orders">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PackageId" Type="nvarchar" MaxLength="20" />
+          <Property Name="OrderId" Type="nvarchar" MaxLength="20" />
+          <Property Name="CompletedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="CompletedDateTime" Type="datetime" />
+          <Property Name="SkidDateTime" Type="datetime" />
+          <Property Name="ProductGroupCode" Type="nvarchar" MaxLength="10" />
+          <Property Name="EquivalentWeightedMean" Type="numeric" Precision="2" Scale="1" />
+          <Property Name="EntDate" Type="smalldatetime" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'OV_DSP.dbo.ProgressLog' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ProgressLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProgressId" Type="nvarchar" MaxLength="20" />
+          <Property Name="ShiftId" Type="nvarchar" MaxLength="10" />
+          <Property Name="PrimaryLine" Type="nvarchar" MaxLength="10" />
+          <Property Name="CompletedDate" Type="smalldatetime" />
+          <Property Name="CompletedHour" Type="nvarchar" MaxLength="20" />
+          <Property Name="Counts" Type="nvarchar" MaxLength="10" />
+          <Property Name="EquivalentCount" Type="nvarchar" MaxLength="10" />
+          <Property Name="CumulativeCount" Type="nvarchar" MaxLength="10" />
+          <Property Name="Issue" Type="nvarchar" MaxLength="50" />
+          <Property Name="Comment" Type="nvarchar" MaxLength="500" />
+          <Property Name="EntDate" Type="smalldatetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'OV_DSP.dbo.Schedule' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Schedule">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="EntDate" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ShiftId" Type="nvarchar" MaxLength="10" />
+          <Property Name="ShiftDay" Type="nvarchar" MaxLength="10" />
+          <Property Name="Line" Type="nvarchar" MaxLength="5" />
+          <Property Name="Members" Type="int" />
+          <Property Name="MemberCapacity" Type="int" />
+          <Property Name="ShiftGoal" Type="int" />
+          <Property Name="ShiftPace" Type="int" />
+          <Property Name="Order_Minutes" Type="int" />
+          <Property Name="Order_Seconds" Type="int" />
+          <Property Name="EntDate" Type="smalldatetime" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'OV_DSP.dbo.Shifts' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Shifts">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ShiftId" Type="nvarchar" MaxLength="5" />
+          <Property Name="ShiftDay" Type="nvarchar" MaxLength="10" />
+          <Property Name="ShiftStart" Type="smalldatetime" />
+          <Property Name="ShiftEnd" Type="smalldatetime" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" />
+          <Property Name="Active" Type="bit" />
+          <Property Name="EntDate" Type="smalldatetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'OV_DSP.dbo.StatusLog' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="StatusLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ShiftId" Type="nvarchar" MaxLength="10" />
+          <Property Name="Lines" Type="nvarchar" MaxLength="20" />
+          <Property Name="PaceCount" Type="nvarchar" MaxLength="20" />
+          <Property Name="ActualCount" Type="nvarchar" MaxLength="20" />
+          <Property Name="EntDate" Type="smalldatetime" />
+        </EntityType>
+        <EntityContainer Name="OV_DSPModelStoreContainer">
+          <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Breaks" EntityType="Self.Breaks" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Breaks].[Id] AS [Id], 
+    [Breaks].[ShiftId] AS [ShiftId], 
+    [Breaks].[ShiftDay] AS [ShiftDay], 
+    [Breaks].[BreakId] AS [BreakId], 
+    [Breaks].[BreakStart] AS [BreakStart], 
+    [Breaks].[BreakEnd] AS [BreakEnd], 
+    [Breaks].[Description] AS [Description], 
+    [Breaks].[Active] AS [Active]
+    FROM [dbo].[Breaks] AS [Breaks]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="EventLog" EntityType="Self.EventLog" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [EventLog].[Id] AS [Id], 
+    [EventLog].[EventId] AS [EventId], 
+    [EventLog].[EventErrorCode] AS [EventErrorCode], 
+    [EventLog].[EventError] AS [EventError], 
+    [EventLog].[EventDateTime] AS [EventDateTime]
+    FROM [dbo].[EventLog] AS [EventLog]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Issues" EntityType="Self.Issues" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Issues].[IssueId] AS [IssueId], 
+    [Issues].[Issue] AS [Issue]
+    FROM [dbo].[Issues] AS [Issues]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="OrderLog" EntityType="Self.OrderLog" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [OrderLog].[Id] AS [Id], 
+    [OrderLog].[ShiftId] AS [ShiftId], 
+    [OrderLog].[ShiftDay] AS [ShiftDay], 
+    [OrderLog].[LinePrimary] AS [LinePrimary], 
+    [OrderLog].[Line] AS [Line], 
+    [OrderLog].[ShiftGoalCount] AS [ShiftGoalCount], 
+    [OrderLog].[ShiftActualCount] AS [ShiftActualCount], 
+    [OrderLog].[SecondsPerOrder] AS [SecondsPerOrder], 
+    [OrderLog].[EntDate] AS [EntDate]
+    FROM [dbo].[OrderLog] AS [OrderLog]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ProgressLog" EntityType="Self.ProgressLog" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ProgressLog].[Id] AS [Id], 
+    [ProgressLog].[ProgressId] AS [ProgressId], 
+    [ProgressLog].[ShiftId] AS [ShiftId], 
+    [ProgressLog].[PrimaryLine] AS [PrimaryLine], 
+    [ProgressLog].[CompletedDate] AS [CompletedDate], 
+    [ProgressLog].[CompletedHour] AS [CompletedHour], 
+    [ProgressLog].[Counts] AS [Counts], 
+    [ProgressLog].[EquivalentCount] AS [EquivalentCount], 
+    [ProgressLog].[CumulativeCount] AS [CumulativeCount], 
+    [ProgressLog].[Issue] AS [Issue], 
+    [ProgressLog].[Comment] AS [Comment], 
+    [ProgressLog].[EntDate] AS [EntDate]
+    FROM [dbo].[ProgressLog] AS [ProgressLog]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Schedule" EntityType="Self.Schedule" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Schedule].[Id] AS [Id], 
+    [Schedule].[ShiftId] AS [ShiftId], 
+    [Schedule].[ShiftDay] AS [ShiftDay], 
+    [Schedule].[Line] AS [Line], 
+    [Schedule].[Members] AS [Members], 
+    [Schedule].[MemberCapacity] AS [MemberCapacity], 
+    [Schedule].[ShiftGoal] AS [ShiftGoal], 
+    [Schedule].[ShiftPace] AS [ShiftPace], 
+    [Schedule].[Order_Minutes] AS [Order_Minutes], 
+    [Schedule].[Order_Seconds] AS [Order_Seconds], 
+    [Schedule].[EntDate] AS [EntDate]
+    FROM [dbo].[Schedule] AS [Schedule]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Shifts" EntityType="Self.Shifts" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Shifts].[Id] AS [Id], 
+    [Shifts].[ShiftId] AS [ShiftId], 
+    [Shifts].[ShiftDay] AS [ShiftDay], 
+    [Shifts].[ShiftStart] AS [ShiftStart], 
+    [Shifts].[ShiftEnd] AS [ShiftEnd], 
+    [Shifts].[Description] AS [Description], 
+    [Shifts].[Active] AS [Active], 
+    [Shifts].[EntDate] AS [EntDate]
+    FROM [dbo].[Shifts] AS [Shifts]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="StatusLog" EntityType="Self.StatusLog" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [StatusLog].[Id] AS [Id], 
+    [StatusLog].[ShiftId] AS [ShiftId], 
+    [StatusLog].[Lines] AS [Lines], 
+    [StatusLog].[PaceCount] AS [PaceCount], 
+    [StatusLog].[ActualCount] AS [ActualCount], 
+    [StatusLog].[EntDate] AS [EntDate]
+    FROM [dbo].[StatusLog] AS [StatusLog]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="OV_DSPModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PackageId" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="OrderId" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="CompletedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CompletedDateTime" Type="DateTime" Precision="3" />
+          <Property Name="SkidDateTime" Type="DateTime" Precision="3" />
+          <Property Name="ProductGroupCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="EquivalentWeightedMean" Type="Decimal" Precision="2" Scale="1" />
+          <Property Name="EntDate" Type="DateTime" Nullable="false" Precision="0" />
+        </EntityType>
+        <EntityType Name="Break">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ShiftId" Type="Int32" />
+          <Property Name="ShiftDay" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="BreakId" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="BreakStart" Type="DateTime" Precision="0" />
+          <Property Name="BreakEnd" Type="DateTime" Precision="0" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="EventLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EventId" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="EventErrorCode" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="EventError" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="EventDateTime" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="Issue">
+          <Key>
+            <PropertyRef Name="IssueId" />
+            <PropertyRef Name="Issue1" />
+          </Key>
+          <Property Name="IssueId" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Issue1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OrderLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ShiftId" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="ShiftDay" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="LinePrimary" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Line" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ShiftGoalCount" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="ShiftActualCount" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="SecondsPerOrder" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="EntDate" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="ProgressLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProgressId" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ShiftId" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="PrimaryLine" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="CompletedDate" Type="DateTime" Precision="0" />
+          <Property Name="CompletedHour" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Counts" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="EquivalentCount" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="CumulativeCount" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Issue" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Comment" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="EntDate" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="Schedule">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="EntDate" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ShiftId" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="ShiftDay" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Line" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="Members" Type="Int32" />
+          <Property Name="MemberCapacity" Type="Int32" />
+          <Property Name="ShiftGoal" Type="Int32" />
+          <Property Name="ShiftPace" Type="Int32" />
+          <Property Name="Order_Minutes" Type="Int32" />
+          <Property Name="Order_Seconds" Type="Int32" />
+          <Property Name="EntDate" Type="DateTime" Nullable="false" Precision="0" />
+        </EntityType>
+        <EntityType Name="Shift">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ShiftId" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="ShiftDay" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="ShiftStart" Type="DateTime" Precision="0" />
+          <Property Name="ShiftEnd" Type="DateTime" Precision="0" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="Boolean" />
+          <Property Name="EntDate" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="StatusLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ShiftId" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Lines" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="PaceCount" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ActualCount" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="EntDate" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityContainer Name="OV_DSPEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Orders" EntityType="Self.Order" />
+          <EntitySet Name="Breaks" EntityType="Self.Break" />
+          <EntitySet Name="EventLogs" EntityType="Self.EventLog" />
+          <EntitySet Name="Issues" EntityType="Self.Issue" />
+          <EntitySet Name="OrderLogs" EntityType="Self.OrderLog" />
+          <EntitySet Name="ProgressLogs" EntityType="Self.ProgressLog" />
+          <EntitySet Name="Schedules" EntityType="Self.Schedule" />
+          <EntitySet Name="Shifts" EntityType="Self.Shift" />
+          <EntitySet Name="StatusLogs" EntityType="Self.StatusLog" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="OV_DSPModelStoreContainer" CdmEntityContainer="OV_DSPEntities">
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="OV_DSPModel.Order">
+              <MappingFragment StoreEntitySet="Orders">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="PackageId" ColumnName="PackageId" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="CompletedBy" ColumnName="CompletedBy" />
+                <ScalarProperty Name="CompletedDateTime" ColumnName="CompletedDateTime" />
+                <ScalarProperty Name="SkidDateTime" ColumnName="SkidDateTime" />
+                <ScalarProperty Name="ProductGroupCode" ColumnName="ProductGroupCode" />
+                <ScalarProperty Name="EquivalentWeightedMean" ColumnName="EquivalentWeightedMean" />
+                <ScalarProperty Name="EntDate" ColumnName="EntDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Breaks">
+            <EntityTypeMapping TypeName="OV_DSPModel.Break">
+              <MappingFragment StoreEntitySet="Breaks">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ShiftId" ColumnName="ShiftId" />
+                <ScalarProperty Name="ShiftDay" ColumnName="ShiftDay" />
+                <ScalarProperty Name="BreakId" ColumnName="BreakId" />
+                <ScalarProperty Name="BreakStart" ColumnName="BreakStart" />
+                <ScalarProperty Name="BreakEnd" ColumnName="BreakEnd" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EventLogs">
+            <EntityTypeMapping TypeName="OV_DSPModel.EventLog">
+              <MappingFragment StoreEntitySet="EventLog">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="EventId" ColumnName="EventId" />
+                <ScalarProperty Name="EventErrorCode" ColumnName="EventErrorCode" />
+                <ScalarProperty Name="EventError" ColumnName="EventError" />
+                <ScalarProperty Name="EventDateTime" ColumnName="EventDateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Issues">
+            <EntityTypeMapping TypeName="OV_DSPModel.Issue">
+              <MappingFragment StoreEntitySet="Issues">
+                <ScalarProperty Name="IssueId" ColumnName="IssueId" />
+                <ScalarProperty Name="Issue1" ColumnName="Issue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderLogs">
+            <EntityTypeMapping TypeName="OV_DSPModel.OrderLog">
+              <MappingFragment StoreEntitySet="OrderLog">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ShiftId" ColumnName="ShiftId" />
+                <ScalarProperty Name="ShiftDay" ColumnName="ShiftDay" />
+                <ScalarProperty Name="LinePrimary" ColumnName="LinePrimary" />
+                <ScalarProperty Name="Line" ColumnName="Line" />
+                <ScalarProperty Name="ShiftGoalCount" ColumnName="ShiftGoalCount" />
+                <ScalarProperty Name="ShiftActualCount" ColumnName="ShiftActualCount" />
+                <ScalarProperty Name="SecondsPerOrder" ColumnName="SecondsPerOrder" />
+                <ScalarProperty Name="EntDate" ColumnName="EntDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProgressLogs">
+            <EntityTypeMapping TypeName="OV_DSPModel.ProgressLog">
+              <MappingFragment StoreEntitySet="ProgressLog">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ProgressId" ColumnName="ProgressId" />
+                <ScalarProperty Name="ShiftId" ColumnName="ShiftId" />
+                <ScalarProperty Name="PrimaryLine" ColumnName="PrimaryLine" />
+                <ScalarProperty Name="CompletedDate" ColumnName="CompletedDate" />
+                <ScalarProperty Name="CompletedHour" ColumnName="CompletedHour" />
+                <ScalarProperty Name="Counts" ColumnName="Counts" />
+                <ScalarProperty Name="EquivalentCount" ColumnName="EquivalentCount" />
+                <ScalarProperty Name="CumulativeCount" ColumnName="CumulativeCount" />
+                <ScalarProperty Name="Issue" ColumnName="Issue" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="EntDate" ColumnName="EntDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Schedules">
+            <EntityTypeMapping TypeName="OV_DSPModel.Schedule">
+              <MappingFragment StoreEntitySet="Schedule">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ShiftId" ColumnName="ShiftId" />
+                <ScalarProperty Name="ShiftDay" ColumnName="ShiftDay" />
+                <ScalarProperty Name="Line" ColumnName="Line" />
+                <ScalarProperty Name="Members" ColumnName="Members" />
+                <ScalarProperty Name="MemberCapacity" ColumnName="MemberCapacity" />
+                <ScalarProperty Name="ShiftGoal" ColumnName="ShiftGoal" />
+                <ScalarProperty Name="ShiftPace" ColumnName="ShiftPace" />
+                <ScalarProperty Name="Order_Minutes" ColumnName="Order_Minutes" />
+                <ScalarProperty Name="Order_Seconds" ColumnName="Order_Seconds" />
+                <ScalarProperty Name="EntDate" ColumnName="EntDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Shifts">
+            <EntityTypeMapping TypeName="OV_DSPModel.Shift">
+              <MappingFragment StoreEntitySet="Shifts">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ShiftId" ColumnName="ShiftId" />
+                <ScalarProperty Name="ShiftDay" ColumnName="ShiftDay" />
+                <ScalarProperty Name="ShiftStart" ColumnName="ShiftStart" />
+                <ScalarProperty Name="ShiftEnd" ColumnName="ShiftEnd" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="EntDate" ColumnName="EntDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StatusLogs">
+            <EntityTypeMapping TypeName="OV_DSPModel.StatusLog">
+              <MappingFragment StoreEntitySet="StatusLog">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ShiftId" ColumnName="ShiftId" />
+                <ScalarProperty Name="Lines" ColumnName="Lines" />
+                <ScalarProperty Name="PaceCount" ColumnName="PaceCount" />
+                <ScalarProperty Name="ActualCount" ColumnName="ActualCount" />
+                <ScalarProperty Name="EntDate" ColumnName="EntDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

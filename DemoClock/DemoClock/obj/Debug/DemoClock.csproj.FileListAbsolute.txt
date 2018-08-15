@@ -1,0 +1,6 @@
+D:\DemoClock\DemoClock\obj\Debug\DemoClock.csprojResolveAssemblyReference.cache
+D:\DemoClock\DemoClock\obj\Debug\Views\MainWindow.g.cs
+D:\DemoClock\DemoClock\obj\Debug\App.g.cs
+D:\DemoClock\DemoClock\obj\Debug\GeneratedInternalTypeHelper.g.cs
+D:\DemoClock\DemoClock\obj\Debug\DemoClock_MarkupCompile.cache
+D:\DemoClock\DemoClock\obj\Debug\DemoClock_MarkupCompile.lref

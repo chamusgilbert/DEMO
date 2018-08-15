@@ -1,0 +1,241 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="OV_DSPModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'OV_DSP.dbo.Breaks' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Breaks">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ShiftId" Type="int" />
+    <Property Name="ShiftDay" Type="nvarchar" MaxLength="5" />
+    <Property Name="BreakId" Type="nvarchar" MaxLength="5" />
+    <Property Name="BreakStart" Type="smalldatetime" />
+    <Property Name="BreakEnd" Type="smalldatetime" />
+    <Property Name="Description" Type="nvarchar" MaxLength="50" />
+    <Property Name="Active" Type="bit" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'OV_DSP.dbo.EquivalentWeightedMean' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="EquivalentWeightedMean">
+          <Property Name="ProductGroupCode" Type="nvarchar" MaxLength="10" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" />
+          <Property Name="WeightedMeanFromSSE" Type="numeric" Precision="2" Scale="1" />
+          <Property Name="Secs2Assemble" Type="int" />
+          <Property Name="Secs2AssembleID" Type="varchar" MaxLength="1" />
+        </EntityType>-->
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'OV_DSP.dbo.EventLog' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="EventLog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EventId" Type="nvarchar" MaxLength="100" />
+    <Property Name="EventErrorCode" Type="nvarchar" MaxLength="200" />
+    <Property Name="EventError" Type="nvarchar" MaxLength="400" />
+    <Property Name="EventDateTime" Type="smalldatetime" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'OV_DSP.dbo.Issues' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Issues">
+    <Key>
+      <PropertyRef Name="IssueId" />
+      <PropertyRef Name="Issue" />
+    </Key>
+    <Property Name="IssueId" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Issue" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'OV_DSP.dbo.OrderLog' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="OrderLog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ShiftId" Type="nvarchar" MaxLength="5" />
+    <Property Name="ShiftDay" Type="nvarchar" MaxLength="3" />
+    <Property Name="LinePrimary" Type="nvarchar" MaxLength="20" />
+    <Property Name="Line" Type="nvarchar" MaxLength="20" />
+    <Property Name="ShiftGoalCount" Type="nvarchar" MaxLength="5" />
+    <Property Name="ShiftActualCount" Type="nvarchar" MaxLength="5" />
+    <Property Name="SecondsPerOrder" Type="nvarchar" MaxLength="5" />
+    <Property Name="EntDate" Type="smalldatetime" />
+  </EntityType>
+  <EntityType Name="Orders">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PackageId" Type="nvarchar" MaxLength="20" />
+    <Property Name="OrderId" Type="nvarchar" MaxLength="20" />
+    <Property Name="CompletedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="CompletedDateTime" Type="datetime" />
+    <Property Name="SkidDateTime" Type="datetime" />
+    <Property Name="ProductGroupCode" Type="nvarchar" MaxLength="10" />
+    <Property Name="EquivalentWeightedMean" Type="numeric" Precision="2" Scale="1" />
+    <Property Name="EntDate" Type="smalldatetime" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'OV_DSP.dbo.ProgressLog' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="ProgressLog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProgressId" Type="nvarchar" MaxLength="20" />
+    <Property Name="ShiftId" Type="nvarchar" MaxLength="10" />
+    <Property Name="PrimaryLine" Type="nvarchar" MaxLength="10" />
+    <Property Name="CompletedDate" Type="smalldatetime" />
+    <Property Name="CompletedHour" Type="nvarchar" MaxLength="20" />
+    <Property Name="Counts" Type="nvarchar" MaxLength="10" />
+    <Property Name="EquivalentCount" Type="nvarchar" MaxLength="10" />
+    <Property Name="CumulativeCount" Type="nvarchar" MaxLength="10" />
+    <Property Name="Issue" Type="nvarchar" MaxLength="50" />
+    <Property Name="Comment" Type="nvarchar" MaxLength="500" />
+    <Property Name="EntDate" Type="smalldatetime" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'OV_DSP.dbo.Schedule' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Schedule">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="EntDate" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ShiftId" Type="nvarchar" MaxLength="10" />
+    <Property Name="ShiftDay" Type="nvarchar" MaxLength="10" />
+    <Property Name="Line" Type="nvarchar" MaxLength="5" />
+    <Property Name="Members" Type="int" />
+    <Property Name="MemberCapacity" Type="int" />
+    <Property Name="ShiftGoal" Type="int" />
+    <Property Name="ShiftPace" Type="int" />
+    <Property Name="Order_Minutes" Type="int" />
+    <Property Name="Order_Seconds" Type="int" />
+    <Property Name="EntDate" Type="smalldatetime" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'OV_DSP.dbo.Shifts' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Shifts">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ShiftId" Type="nvarchar" MaxLength="5" />
+    <Property Name="ShiftDay" Type="nvarchar" MaxLength="10" />
+    <Property Name="ShiftStart" Type="smalldatetime" />
+    <Property Name="ShiftEnd" Type="smalldatetime" />
+    <Property Name="Description" Type="nvarchar" MaxLength="50" />
+    <Property Name="Active" Type="bit" />
+    <Property Name="EntDate" Type="smalldatetime" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'OV_DSP.dbo.StatusLog' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="StatusLog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ShiftId" Type="nvarchar" MaxLength="10" />
+    <Property Name="Lines" Type="nvarchar" MaxLength="20" />
+    <Property Name="PaceCount" Type="nvarchar" MaxLength="20" />
+    <Property Name="ActualCount" Type="nvarchar" MaxLength="20" />
+    <Property Name="EntDate" Type="smalldatetime" />
+  </EntityType>
+  <EntityContainer Name="OV_DSPModelStoreContainer">
+    <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Breaks" EntityType="Self.Breaks" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Breaks].[Id] AS [Id], 
+    [Breaks].[ShiftId] AS [ShiftId], 
+    [Breaks].[ShiftDay] AS [ShiftDay], 
+    [Breaks].[BreakId] AS [BreakId], 
+    [Breaks].[BreakStart] AS [BreakStart], 
+    [Breaks].[BreakEnd] AS [BreakEnd], 
+    [Breaks].[Description] AS [Description], 
+    [Breaks].[Active] AS [Active]
+    FROM [dbo].[Breaks] AS [Breaks]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="EventLog" EntityType="Self.EventLog" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [EventLog].[Id] AS [Id], 
+    [EventLog].[EventId] AS [EventId], 
+    [EventLog].[EventErrorCode] AS [EventErrorCode], 
+    [EventLog].[EventError] AS [EventError], 
+    [EventLog].[EventDateTime] AS [EventDateTime]
+    FROM [dbo].[EventLog] AS [EventLog]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Issues" EntityType="Self.Issues" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Issues].[IssueId] AS [IssueId], 
+    [Issues].[Issue] AS [Issue]
+    FROM [dbo].[Issues] AS [Issues]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="OrderLog" EntityType="Self.OrderLog" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [OrderLog].[Id] AS [Id], 
+    [OrderLog].[ShiftId] AS [ShiftId], 
+    [OrderLog].[ShiftDay] AS [ShiftDay], 
+    [OrderLog].[LinePrimary] AS [LinePrimary], 
+    [OrderLog].[Line] AS [Line], 
+    [OrderLog].[ShiftGoalCount] AS [ShiftGoalCount], 
+    [OrderLog].[ShiftActualCount] AS [ShiftActualCount], 
+    [OrderLog].[SecondsPerOrder] AS [SecondsPerOrder], 
+    [OrderLog].[EntDate] AS [EntDate]
+    FROM [dbo].[OrderLog] AS [OrderLog]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="ProgressLog" EntityType="Self.ProgressLog" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [ProgressLog].[Id] AS [Id], 
+    [ProgressLog].[ProgressId] AS [ProgressId], 
+    [ProgressLog].[ShiftId] AS [ShiftId], 
+    [ProgressLog].[PrimaryLine] AS [PrimaryLine], 
+    [ProgressLog].[CompletedDate] AS [CompletedDate], 
+    [ProgressLog].[CompletedHour] AS [CompletedHour], 
+    [ProgressLog].[Counts] AS [Counts], 
+    [ProgressLog].[EquivalentCount] AS [EquivalentCount], 
+    [ProgressLog].[CumulativeCount] AS [CumulativeCount], 
+    [ProgressLog].[Issue] AS [Issue], 
+    [ProgressLog].[Comment] AS [Comment], 
+    [ProgressLog].[EntDate] AS [EntDate]
+    FROM [dbo].[ProgressLog] AS [ProgressLog]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Schedule" EntityType="Self.Schedule" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Schedule].[Id] AS [Id], 
+    [Schedule].[ShiftId] AS [ShiftId], 
+    [Schedule].[ShiftDay] AS [ShiftDay], 
+    [Schedule].[Line] AS [Line], 
+    [Schedule].[Members] AS [Members], 
+    [Schedule].[MemberCapacity] AS [MemberCapacity], 
+    [Schedule].[ShiftGoal] AS [ShiftGoal], 
+    [Schedule].[ShiftPace] AS [ShiftPace], 
+    [Schedule].[Order_Minutes] AS [Order_Minutes], 
+    [Schedule].[Order_Seconds] AS [Order_Seconds], 
+    [Schedule].[EntDate] AS [EntDate]
+    FROM [dbo].[Schedule] AS [Schedule]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Shifts" EntityType="Self.Shifts" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Shifts].[Id] AS [Id], 
+    [Shifts].[ShiftId] AS [ShiftId], 
+    [Shifts].[ShiftDay] AS [ShiftDay], 
+    [Shifts].[ShiftStart] AS [ShiftStart], 
+    [Shifts].[ShiftEnd] AS [ShiftEnd], 
+    [Shifts].[Description] AS [Description], 
+    [Shifts].[Active] AS [Active], 
+    [Shifts].[EntDate] AS [EntDate]
+    FROM [dbo].[Shifts] AS [Shifts]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="StatusLog" EntityType="Self.StatusLog" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [StatusLog].[Id] AS [Id], 
+    [StatusLog].[ShiftId] AS [ShiftId], 
+    [StatusLog].[Lines] AS [Lines], 
+    [StatusLog].[PaceCount] AS [PaceCount], 
+    [StatusLog].[ActualCount] AS [ActualCount], 
+    [StatusLog].[EntDate] AS [EntDate]
+    FROM [dbo].[StatusLog] AS [StatusLog]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>
